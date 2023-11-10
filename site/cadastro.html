@@ -9,7 +9,7 @@
 <body>
 	
 	<div class="header" id="header">
-		<img src="img/bateria_icone.png" class="icone"> 
+		<a href="index.html" ><img src="img/bateria_icone.png"  class="icone"> </a>
 		<ul class="itensHeader">
 			<li class="itemTom">
 				<h3>Home</h3>
@@ -28,7 +28,42 @@
 	</div>
 
 	<div class="main">
-		<div class="container">
+		<div class="containerCad">
+			<form class="formCad">
+
+				<h1>Cadastro</h1>
+
+				<div class="inpt_cad">
+					Seu nome inteiro:<input type="text" id="inpt_nome" name="">
+					Seu email: <input type="email" id="inpt_email" name="">
+				</div>
+				<div class="inpt_cad">
+					CEP <input type="text" id="inpt_cep">
+				</div>
+				<div class="inpt_cad">
+					numero da casa <input type="number" id="inpt_numCasa" name=""> 
+				</div>
+				<div class="inpt_cad">
+					Complemento da casa <input type="text" name="">
+				</div>
+				<div class="inpt_cad">
+					Data de nascimento <input type="date" id="inpt_nascimento" name="">
+					Com quantos anos começou a tocar bateria? <input type="number" id="inpt_comeco" name="">
+				</div>
+				<div class="inpt_cad">
+					Marca de bateria favoria: 
+					<select id="slt_marca">
+						<option>Selecione uma marca</option>	
+						<option>Yamaha</option>	
+						<option>Gretsch</option>		
+						<option>Pearl</option>	
+						<option>Ludwig</option>		
+						<option>Tama</option>	
+						<option>DW Drums</option>	  
+					</select> 
+				</div>
+				<button>Cadastrar</button>
+			</form>
 		</div>
 	</div>
 	
