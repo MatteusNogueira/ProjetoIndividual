@@ -4,6 +4,8 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="css/style.css"> 
+	
+	<script src="./js/sessao.js"></script>
 	<title>Site Bateria</title>
 </head>
 <body>
@@ -37,7 +39,7 @@
 				Email <input type="email" id="emailLogin" name="">
 			</div>
 			<div class="inpt_side">
-				Senha <input type="password" id="emailLogin" name="">
+				Senha <input type="password" id="senhaLogin" name="">
 			</div>
 			<div class="inpt_side">
 				<button class="btnLogin">Logar</button>
@@ -48,24 +50,36 @@
 		<div class="divCad" id="divCad" style="display: none;">
 			<div class="inpt_side">
 				Nome <input type="email" id="nomeCad" name="">
-			</div><div class="inpt_side">
+			</div>
+			<div class="inpt_side">
 				Email <input type="email" id="emailCad" name="">
-			</div><div class="inpt_side">
-				CEP <input type="email" id="cepCad" name="">
-			</div><div class="inpt_side">
+			</div>
+			<div class="inpt_side">
+				Senha <input type="password" id="senhaCad" name="">
+			</div>
+			<div class="inpt_side">
+				Confirmar Senha <input type="password" id="confsenhaCad" name="">
+			</div>
+			<!-- <div class="inpt_side">
+				CEP <input type="text" id="cepCad" name="">
+			</div>
+			<div class="inpt_side">
 				Numero <input type="email" id="numeroCad" name="">
-			</div><div class="inpt_side">
+			</div>
+			<div class="inpt_side">
 				Complemento <input type="email" id="complementoCad" name="">
-			</div>
+			</div> -->
 			<div class="inpt_side">
-				Data de nascimento <input type="email" id="dtNascCad" name="">
+				Data de nascimento <input type="text" id="dtNascCad" name="">
 			</div>
-			<div class="inpt_side">
+			<!-- <div class="inpt_side">
 				Quantos anos começou a tocar bateria? <input type="email" id="comecoCad" name="">
 			</div>
 			<div class="inpt_side">
 				Marcafavoria <input type="email" id="emailCad" name="">
-			</div><br><br>
+			</div> -->
+			<br><br>
+			<button onclick="cadastrar()">Cadastrar</button>
 			<a onclick="aparecer()" class="btnAparecer">Já possui um cadastro? clique aqui</a>
 		</div>
 	</div>
@@ -75,6 +89,83 @@
 </html>
 
 <script>
+
+function cadastrar() {
+    aguardar();
+
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var nomeVar = nomeCad.value;
+    var emailVar = emailCad.value;
+    var senhaVar = senhaCad.value;
+    var confirmacaoSenhaVar = confsenhaCad.value;
+    var empresaVar = dtNascCad.value
+    if (
+      nomeVar == "" ||
+      emailVar == "" ||
+      senhaVar == "" ||
+      confirmacaoSenhaVar == "" ||
+      empresaVar == ""
+    ) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "(Mensagem de erro para todos os campos em branco)";
+
+      finalizarAguardar();
+      return false;
+    } else {
+      setInterval(sumirMensagem, 5000);
+    }
+
+    // Enviando o valor da nova input
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeServer: nomeVar,
+        emailServer: emailVar,
+        senhaServer: senhaVar,
+        empresaServer: empresaVar
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          cardErro.style.display = "block";
+
+          mensagem_erro.innerHTML =
+            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+          setTimeout(() => {
+            window.location = "login.html";
+          }, "2000");
+
+          limparFormulario();
+          finalizarAguardar();
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        finalizarAguardar();
+      });
+
+    return false;
+  }
+
+
+
+
+
+
+
+
 	var delay = 0;
 	function aparecer(){
 
@@ -113,5 +204,4 @@
 			divCad.style.display = 'flex'
 		}
 	}
-
 </script>
