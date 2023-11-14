@@ -137,7 +137,7 @@ body{
   padding-top: 20px;
 }
 
-.divLogin{
+.divLogin, .divCad{
   display: flex;
   flex-direction: column;
   margin-left: 40px;
@@ -165,6 +165,12 @@ body{
   width: 85%;
   color: white;
   margin-top: 40px;
+}
+
+.btnAparecer{
+  cursor: pointer;
+  color: white;
+  font-size: 15px;
 }
 
 
