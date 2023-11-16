@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/style.css"> 
+	
+	<script src="./js/sessao.js"></script>
+	<title>Site Bateria</title>
+</head>
+<body>
+
+	<div class="header" id="header">
+		<img src="img/bateria_icone.png" class="icone" href="index.html"> 
+		<ul class="itensHeader">
+			<li class="itemTom">
+				<h3>Home</h3>
+			</li>
+			<li class="itemTom">
+				<h3>Historia</h3>
+			</li>
+			<li class="itemTom">
+				<h3>Tocar</h3>
+			</li>
+			<!-- <li class="itemTom">
+				<h3>Perfil</h3>
+			</li>
+ -->		</ul>
+	</div>
+
+	<div class="main">
+
+		<div class="pg1" id="pg1">
+			
+		</div>
+			
+		<div class="pg2" id="pg2">
+
+			<div class="container">
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<div class="sidebar">
+
+		<div class="divCad" id="divPerfil" style="display:none;">
+			<img src="img/macaco.jpg"><br>
+			<span id="spnNome"></span><br>
+			<span id="spnEmail"></span>
+				<button class="btnLogin" onclick="sair()">sair</button>
+		</div>
+
+		<div class="divLogin" id="divLogin">
+			<div class="input_titulo inpt_side">
+				Login
+			</div>
+			<div class="inpt_side">
+				Email <input type="email" id="emailLogin" name="">
+			</div>
+			<div class="inpt_side">
+				Senha <input type="password" id="senhaLogin" name="">
+			</div>
+			<div class="inpt_side">
+				<button class="btnLogin" onclick="entrar()">Logar</button>
+			</div><br><br>
+			<a onclick="aparecer()" class="btnAparecer">Não possui cadastro? clique aqui</a>
+		</div>
+
+		<div class="divCad" id="divCad" style="display: none;">
+			<div class="inpt_side">
+				Nome <input type="email" id="nomeCad" name="">
+			</div>
+			<div class="inpt_side">
+				Email <input type="email" id="emailCad" name="">
+			</div>
+			<div class="inpt_side">
+				Senha <input type="password" id="senhaCad" name="">
+			</div>
+			<div class="inpt_side">
+				Confirmar Senha <input type="password" id="confsenhaCad" name="">
+			</div>
+			<!-- <div class="inpt_side">
+				CEP <input type="text" id="cepCad" name="">
+			</div>
+			<div class="inpt_side">
+				Numero <input type="email" id="numeroCad" name="">
+			</div>
+			<div class="inpt_side">
+				Complemento <input type="email" id="complementoCad" name="">
+			</div> -->
+			<div class="inpt_side">
+				Data de nascimento <input type="text" id="dtNascCad" name="">
+			</div>
+			<!-- <div class="inpt_side">
+				Quantos anos começou a tocar bateria? <input type="email" id="comecoCad" name="">
+			</div>
+			<div class="inpt_side">
+				Marcafavoria <input type="email" id="emailCad" name="">
+			</div> -->
+			<br><br>
+			<button onclick="cadastrar()">Cadastrar</button>
+			<a onclick="aparecer()" class="btnAparecer">Já possui um cadastro? clique aqui</a>
+		</div>
+	</div>
+	
+
+</body>
+</html>
+
+<script>
+
+	if (sessionStorage.LOGADO == 1) {
+		divLogin.style.display = 'none';
+		divPerfil.style.display = 'block'
+
+		spnNome.innerHTML = sessionStorage.NOME_USUARIO;
+		spnEmail.innerHTML = sessionStorage.EMAIL_USUARIO;
+
+	}
+
+	function sair(){
+		sessionStorage.LOGADO = 0;
+    window.location = "index.html";
+
+	}
+
+	function entrar(){
+        var emailVar = emailLogin.value;
+        var senhaVar = senhaLogin.value;
+
+        if (emailVar == "" || senhaVar == "") {
+            alert("(Mensagem de erro para todos os campos em branco)");
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.LOGADO = 1;
+                    sessionStorage.ID_USUARIO = json.id;
+                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+
+                    setTimeout(function () {
+                        window.location = "index.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+
+function cadastrar() {
+
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var nomeVar = nomeCad.value;
+    var emailVar = emailCad.value;
+    var senhaVar = senhaCad.value;
+    var confirmacaoSenhaVar = confsenhaCad.value;
+    var empresaVar = '1'
+    if (
+      nomeVar == "" ||
+      emailVar == "" ||
+      senhaVar == "" ||
+      confirmacaoSenhaVar == "" ||
+      empresaVar == ""
+    ) {
+      alert(
+        "(Mensagem de erro para todos os campos em branco)");
+
+      return false;
+    } else {
+      setInterval(sumirMensagem, 5000);
+    }
+
+    // Enviando o valor da nova input
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeServer: nomeVar,
+        emailServer: emailVar,
+        senhaServer: senhaVar,
+        empresaServer: empresaVar
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+
+          alert("Cadastro realizado com sucesso! Redirecionando para tela de Login...");
+
+          setTimeout(() => {
+            window.location = "index.html";
+          }, "2000");
+
+          limparFormulario();
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+
+    return false;
+  }
+
+  function sumirMensagem() {
+    // cardErro.style.display = "none";
+  }
+
+
+
+
+
+
+
+	var delay = 0;
+	function aparecer(){
+
+		var disp = divCad.style.display
+
+		if (disp == 'flex') {
+			aparecerLogin(false)
+			setTimeout(	
+				aparecerCad(true)	
+			, 3000)
+		}else{
+			aparecerCad(false)
+			setTimeout(	
+				aparecerLogin(true)
+			, 3000)
+		}
+
+	}
+	
+	function aparecerLogin(teste){
+		if (teste) {
+			delay = 1000
+			divLogin.style.display = 'none'
+		}else{
+			delay = 0
+			divLogin.style.display = 'flex'
+		}
+	}
+
+	function aparecerCad(teste){
+		if (teste) {
+			delay = 1000
+			divCad.style.display = 'none'
+		}else{
+			delay = 0
+			divCad.style.display = 'flex'
+		}
+	}
+</script>
