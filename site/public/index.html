@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="css/style.css"> 
-	
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
 	<script src="./js/sessao.js"></script>
 	<title>Site Bateria</title>
 </head>
+
 <body>
 
 	<div class="header" id="header">
-		<img src="img/bateria_icone.png" class="icone" href="index.html"> 
+		<img src="img/bateria_icone.png" class="icone" href="index.html">
 		<ul class="itensHeader">
 			<li class="itemTom">
 				<h3>Home</h3>
@@ -25,15 +27,16 @@
 			<!-- <li class="itemTom">
 				<h3>Perfil</h3>
 			</li>
- -->		</ul>
+ -->
+		</ul>
 	</div>
 
 	<div class="main">
 
 		<div class="pg1" id="pg1">
-			
+			<h1 class="titulo_pg1">Druming - batucar é vida</h1>
 		</div>
-			
+
 		<div class="pg2" id="pg2">
 
 			<div class="container">
@@ -46,14 +49,7 @@
 
 	<div class="sidebar">
 
-		<div class="divCad" id="divPerfil" style="display:none;">
-			<img src="img/macaco.jpg"><br>
-			<span id="spnNome"></span><br>
-			<span id="spnEmail"></span>
-				<button class="btnLogin" onclick="sair()">sair</button>
-		</div>
-
-		<div class="divLogin" id="divLogin">
+		<div class="divCad" id="divLogin">
 			<div class="input_titulo inpt_side">
 				Login
 			</div>
@@ -64,12 +60,33 @@
 				Senha <input type="password" id="senhaLogin" name="">
 			</div>
 			<div class="inpt_side">
-				<button class="btnLogin" onclick="entrar()">Logar</button>
-			</div><br><br>
-			<a onclick="aparecer()" class="btnAparecer">Não possui cadastro? clique aqui</a>
+				<button class="btnLogin" onclick="entrar()">Logar</button><br><br>
+				<a onclick="aparecer()" class="btnAparecer"><u><i>Não possui cadastro? clique aqui</i></u></a>
+			</div>
+		</div>
+
+		<div class="divCad" id="divPerfil">
+			<div class="input_titulo inpt_side">
+				Perfil
+			</div>
+			<div class="inpt_side">
+				<img src="img/macaco.jpg">
+			</div>
+			<div class="inpt_side">
+				<span id="spnNome"></span>
+			</div>
+			<div class="inpt_side">
+				<span id="spnEmail"></span>
+			</div>
+			<div class="inpt_side">
+				<button class="btnLogin" onclick="sair()">sair</button>
+			</div>
 		</div>
 
 		<div class="divCad" id="divCad" style="display: none;">
+			<div class="input_titulo inpt_side">
+				Cadastro
+			</div>
 			<div class="inpt_side">
 				Nome <input type="email" id="nomeCad" name="">
 			</div>
@@ -100,160 +117,163 @@
 			<div class="inpt_side">
 				Marcafavoria <input type="email" id="emailCad" name="">
 			</div> -->
-			<br><br>
-			<button onclick="cadastrar()">Cadastrar</button>
-			<a onclick="aparecer()" class="btnAparecer">Já possui um cadastro? clique aqui</a>
+			<div class="inpt_side">
+				<button onclick="cadastrar()" class="btnLogin">Cadastrar</button>
+				<br><br>
+				<a onclick="aparecer()" class="btnAparecer"><u><i>Já possui um cadastro? clique aqui</i></u></a>
+			</div>
 		</div>
 	</div>
-	
+
 
 </body>
+
 </html>
 
 <script>
 
 	if (sessionStorage.LOGADO == 1) {
 		divLogin.style.display = 'none';
-		divPerfil.style.display = 'block'
+		divPerfil.style.display = 'flex'
 
 		spnNome.innerHTML = sessionStorage.NOME_USUARIO;
 		spnEmail.innerHTML = sessionStorage.EMAIL_USUARIO;
 
 	}
 
-	function sair(){
+	function sair() {
 		sessionStorage.LOGADO = 0;
-    window.location = "index.html";
+		window.location = "index.html";
 
 	}
 
-	function entrar(){
-        var emailVar = emailLogin.value;
-        var senhaVar = senhaLogin.value;
+	function entrar() {
+		var emailVar = emailLogin.value;
+		var senhaVar = senhaLogin.value;
 
-        if (emailVar == "" || senhaVar == "") {
-            alert("(Mensagem de erro para todos os campos em branco)");
-            return false;
-        }
-        else {
-            setInterval(sumirMensagem, 5000)
-        }
+		if (emailVar == "" || senhaVar == "") {
+			alert("(Mensagem de erro para todos os campos em branco)");
+			return false;
+		}
+		else {
+			setInterval(sumirMensagem, 5000)
+		}
 
-        console.log("FORM LOGIN: ", emailVar);
-        console.log("FORM SENHA: ", senhaVar);
+		console.log("FORM LOGIN: ", emailVar);
+		console.log("FORM SENHA: ", senhaVar);
 
-        fetch("/usuarios/autenticar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                emailServer: emailVar,
-                senhaServer: senhaVar
-            })
-        }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!")
+		fetch("/usuarios/autenticar", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify({
+				emailServer: emailVar,
+				senhaServer: senhaVar
+			})
+		}).then(function (resposta) {
+			console.log("ESTOU NO THEN DO entrar()!")
 
-            if (resposta.ok) {
-                console.log(resposta);
+			if (resposta.ok) {
+				console.log(resposta);
 
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-                    sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.LOGADO = 1;
-                    sessionStorage.ID_USUARIO = json.id;
-                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+				resposta.json().then(json => {
+					console.log(json);
+					console.log(JSON.stringify(json));
+					sessionStorage.EMAIL_USUARIO = json.email;
+					sessionStorage.NOME_USUARIO = json.nome;
+					sessionStorage.LOGADO = 1;
+					sessionStorage.ID_USUARIO = json.id;
+					sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
 
-                    setTimeout(function () {
-                        window.location = "index.html";
-                    }, 1000); // apenas para exibir o loading
+					setTimeout(function () {
+						window.location = "index.html";
+					}, 1000); // apenas para exibir o loading
 
-                });
+				});
 
-            } else {
+			} else {
 
-                console.log("Houve um erro ao tentar realizar o login!");
+				console.log("Houve um erro ao tentar realizar o login!");
 
-                resposta.text().then(texto => {
-                    console.error(texto);
-                });
-            }
+				resposta.text().then(texto => {
+					console.error(texto);
+				});
+			}
 
-        }).catch(function (erro) {
-            console.log(erro);
-        })
+		}).catch(function (erro) {
+			console.log(erro);
+		})
 
-        return false;
-    }
+		return false;
+	}
 
 
-function cadastrar() {
+	function cadastrar() {
 
-    //Recupere o valor da nova input pelo nome do id
-    // Agora vá para o método fetch logo abaixo
-    var nomeVar = nomeCad.value;
-    var emailVar = emailCad.value;
-    var senhaVar = senhaCad.value;
-    var confirmacaoSenhaVar = confsenhaCad.value;
-    var empresaVar = '1'
-    if (
-      nomeVar == "" ||
-      emailVar == "" ||
-      senhaVar == "" ||
-      confirmacaoSenhaVar == "" ||
-      empresaVar == ""
-    ) {
-      alert(
-        "(Mensagem de erro para todos os campos em branco)");
+		//Recupere o valor da nova input pelo nome do id
+		// Agora vá para o método fetch logo abaixo
+		var nomeVar = nomeCad.value;
+		var emailVar = emailCad.value;
+		var senhaVar = senhaCad.value;
+		var confirmacaoSenhaVar = confsenhaCad.value;
+		var empresaVar = '1'
+		if (
+			nomeVar == "" ||
+			emailVar == "" ||
+			senhaVar == "" ||
+			confirmacaoSenhaVar == "" ||
+			empresaVar == ""
+		) {
+			alert(
+				"(Mensagem de erro para todos os campos em branco)");
 
-      return false;
-    } else {
-      setInterval(sumirMensagem, 5000);
-    }
+			return false;
+		} else {
+			setInterval(sumirMensagem, 5000);
+		}
 
-    // Enviando o valor da nova input
-    fetch("/usuarios/cadastrar", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        // Agora vá para o arquivo routes/usuario.js
-        nomeServer: nomeVar,
-        emailServer: emailVar,
-        senhaServer: senhaVar,
-        empresaServer: empresaVar
-      }),
-    })
-      .then(function (resposta) {
-        console.log("resposta: ", resposta);
+		// Enviando o valor da nova input
+		fetch("/usuarios/cadastrar", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				// crie um atributo que recebe o valor recuperado aqui
+				// Agora vá para o arquivo routes/usuario.js
+				nomeServer: nomeVar,
+				emailServer: emailVar,
+				senhaServer: senhaVar,
+				empresaServer: empresaVar
+			}),
+		})
+			.then(function (resposta) {
+				console.log("resposta: ", resposta);
 
-        if (resposta.ok) {
+				if (resposta.ok) {
 
-          alert("Cadastro realizado com sucesso! Redirecionando para tela de Login...");
+					alert("Cadastro realizado com sucesso! Redirecionando para tela de Login...");
 
-          setTimeout(() => {
-            window.location = "index.html";
-          }, "2000");
+					setTimeout(() => {
+						window.location = "index.html";
+					}, "2000");
 
-          limparFormulario();
-        } else {
-          throw "Houve um erro ao tentar realizar o cadastro!";
-        }
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-      });
+					limparFormulario();
+				} else {
+					throw "Houve um erro ao tentar realizar o cadastro!";
+				}
+			})
+			.catch(function (resposta) {
+				console.log(`#ERRO: ${resposta}`);
+			});
 
-    return false;
-  }
+		return false;
+	}
 
-  function sumirMensagem() {
-    // cardErro.style.display = "none";
-  }
+	function sumirMensagem() {
+		// cardErro.style.display = "none";
+	}
 
 
 
@@ -262,39 +282,39 @@ function cadastrar() {
 
 
 	var delay = 0;
-	function aparecer(){
+	function aparecer() {
 
 		var disp = divCad.style.display
 
 		if (disp == 'flex') {
 			aparecerLogin(false)
-			setTimeout(	
-				aparecerCad(true)	
-			, 3000)
-		}else{
+			setTimeout(
+				aparecerCad(true)
+				, 3000)
+		} else {
 			aparecerCad(false)
-			setTimeout(	
+			setTimeout(
 				aparecerLogin(true)
-			, 3000)
+				, 3000)
 		}
 
 	}
-	
-	function aparecerLogin(teste){
+
+	function aparecerLogin(teste) {
 		if (teste) {
 			delay = 1000
 			divLogin.style.display = 'none'
-		}else{
+		} else {
 			delay = 0
 			divLogin.style.display = 'flex'
 		}
 	}
 
-	function aparecerCad(teste){
+	function aparecerCad(teste) {
 		if (teste) {
 			delay = 1000
 			divCad.style.display = 'none'
-		}else{
+		} else {
 			delay = 0
 			divCad.style.display = 'flex'
 		}
