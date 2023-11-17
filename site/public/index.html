@@ -15,13 +15,13 @@
 	<div class="header" id="header">
 		<img src="img/bateria_icone.png" class="icone" href="index.html">
 		<ul class="itensHeader">
-			<li class="itemTom">
+			<li class="itemTom" onclick="trocar('index')">
 				<h3>Home</h3>
 			</li>
-			<li class="itemTom">
+			<li class="itemTom" onclick="trocar('historia')">
 				<h3>Historia</h3>
 			</li>
-			<li class="itemTom">
+			<li class="itemTom" onclick="trocar('tocar')">
 				<h3>Tocar</h3>
 			</li>
 			<!-- <li class="itemTom">
@@ -31,10 +31,10 @@
 		</ul>
 	</div>
 
-	<div class="main">
+	<div class="mainI">
 
 		<div class="pg1" id="pg1">
-			<h1 class="titulo_pg1">Druming - batucar é vida</h1>
+			<h1 class="titulo_pg1">DRUMING - BATUCAR É VIDA</h1>
 		</div>
 
 		<div class="pg2" id="pg2">
@@ -129,7 +129,6 @@
 </body>
 
 </html>
-
 <script>
 
 	if (sessionStorage.LOGADO == 1) {
@@ -141,6 +140,9 @@
 
 	}
 
+	function trocar(pagina) {
+		window.location.href = `${pagina}.html`
+	}
 	function sair() {
 		sessionStorage.LOGADO = 0;
 		window.location = "index.html";
@@ -220,10 +222,10 @@
 		var nascVar = dtNascCad.value;
 		if (
 			(nomeVar == "" ||
-						emailVar == "" ||
-						senhaVar == "" ||
-						confirmacaoSenhaVar == "" ||
-						nascVar == "") && senhaVar == confirmacaoSenhaVar
+				emailVar == "" ||
+				senhaVar == "" ||
+				confirmacaoSenhaVar == "" ||
+				nascVar == "") && senhaVar == confirmacaoSenhaVar
 		) {
 			alert(
 				"(Mensagem de erro para todos os campos em branco)");

@@ -1,6 +1,3 @@
-use aquatech;
-
-select * from usuario;
 
 create database druming;
 
