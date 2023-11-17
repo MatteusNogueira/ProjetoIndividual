@@ -109,7 +109,7 @@
 				Complemento <input type="email" id="complementoCad" name="">
 			</div> -->
 			<div class="inpt_side">
-				Data de nascimento <input type="text" id="dtNascCad" name="">
+				Data de nascimento <input type="date" id="dtNascCad" name="">
 			</div>
 			<!-- <div class="inpt_side">
 				Quantos anos começou a tocar bateria? <input type="email" id="comecoCad" name="">
@@ -183,8 +183,8 @@
 					sessionStorage.EMAIL_USUARIO = json.email;
 					sessionStorage.NOME_USUARIO = json.nome;
 					sessionStorage.LOGADO = 1;
-					sessionStorage.ID_USUARIO = json.id;
-					sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+					sessionStorage.ID_USUARIO = json.idUsuario;
+					sessionStorage.DTNASC = json.dtNasc
 
 					setTimeout(function () {
 						window.location = "index.html";
@@ -217,13 +217,13 @@
 		var emailVar = emailCad.value;
 		var senhaVar = senhaCad.value;
 		var confirmacaoSenhaVar = confsenhaCad.value;
-		var empresaVar = '1'
+		var nascVar = dtNascCad.value;
 		if (
-			nomeVar == "" ||
-			emailVar == "" ||
-			senhaVar == "" ||
-			confirmacaoSenhaVar == "" ||
-			empresaVar == ""
+			(nomeVar == "" ||
+						emailVar == "" ||
+						senhaVar == "" ||
+						confirmacaoSenhaVar == "" ||
+						nascVar == "") && senhaVar == confirmacaoSenhaVar
 		) {
 			alert(
 				"(Mensagem de erro para todos os campos em branco)");
@@ -245,7 +245,7 @@
 				nomeServer: nomeVar,
 				emailServer: emailVar,
 				senhaServer: senhaVar,
-				empresaServer: empresaVar
+				nascimentoServer: nascVar
 			}),
 		})
 			.then(function (resposta) {
