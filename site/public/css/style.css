@@ -27,6 +27,8 @@ a {
   color: #FFE07D;
   position: fixed;
   top: 0;
+  z-index: 10000;
+  border-bottom: 2px #22303d solid;
 }
 
 .header a {
@@ -115,30 +117,101 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-}
 
+}
 .titulo_pg1 {
   font-family: 'Cormorant Garamond', serif;
   font-size: 65px;
   text-shadow: 2px 3px 4px black;
+  animation: descer duration timing-function delay iteration-count direction fill-mode;
 }
 
 .pg2 {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
   background-color: white;
-  height: 100vh;
+  height: fit-content;
+  background-color: darkred;
+  width: 100%;
+  /* overflow-y: hidden; */
+}
+.pg2 h1 {
+ align-self: center;
 }
 
+.backE, .backD{
+  position: absolute;
+  width: 50%;
+  height: 192.13%;
+  display: flex;
+  flex-direction: row;
+}
+
+.cont{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+}
+.backD{
+  /* height: 194%; */
+  right: 0;
+  background: brown;
+}
+.backE{
+  background: #22303d;
+}
+
+.curve {
+  fill:url(#MyGradient);
+  height: 100%;
+  stroke: black;
+  stroke-width: 0.2;
+  transform:rotateX(180deg);
+}
+
+.div_conteudo{
+  position: absolute; 
+  width: 100%; 
+  display: flex; 
+  flex-direction: column; 
+  row-gap: 80px;
+  padding-top: 0px;
+}
+
+.container2{
+  display: flex;
+  justify-content: center;
+  width: 35%;
+  padding: 20px 40px;
+  background: rgba(255, 223, 0, 0.4);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4.6px);
+  -webkit-backdrop-filter: blur(4.6px);
+  border: 4px solid gold;
+}
 
 .container {
+  padding: 20px 40px;
   /*  background-color: black;*/
-  width: 60%;
-  height: 95%;
-  background-color: #efefefde;
-  border-radius: 20px;
-  box-shadow: 0px 0px 60px #aaaaaa;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 35%;
+  height: 100%;
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4.6px);
+  -webkit-backdrop-filter: blur(4.6px);
+  border: 1px solid rgba(255, 255, 255, 1);
+}
+
+.container h2{
+  margin-bottom: 30px;
 }
 
 .containerCad {
