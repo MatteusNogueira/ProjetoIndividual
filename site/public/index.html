@@ -200,7 +200,7 @@ A abordagem de Tommy Lee à bateria é marcada por seu uso pioneiro de elementos
 			</div>
 			<div class="inpt_side">
 				<button class="btnLogin" onclick="entrar()">Logar</button><br><br>
-				<a onclick="aparecer()" class="btnAparecer"><u><i>Não possui cadastro? clique aqui</i></u></a>
+				<a onclick="aparecer()" href="#" class="btnAparecer"><u><i>Não possui cadastro? clique aqui</i></u></a>
 			</div>
 		</div>
 
@@ -259,7 +259,7 @@ A abordagem de Tommy Lee à bateria é marcada por seu uso pioneiro de elementos
 			<div class="inpt_side">
 				<button onclick="cadastrar()" class="btnLogin">Cadastrar</button>
 				<br><br>
-				<a onclick="aparecer()" class="btnAparecer"><u><i>Já possui um cadastro? clique aqui</i></u></a>
+				<a onclick="aparecer()" href="#" class="btnAparecer"><u><i>Já possui um cadastro? clique aqui</i></u></a>
 			</div>
 		</div>
 	</div>
@@ -428,36 +428,56 @@ A abordagem de Tommy Lee à bateria é marcada por seu uso pioneiro de elementos
 		var disp = divCad.style.display
 
 		if (disp == 'flex') {
-			aparecerLogin(false)
-			setTimeout(
-				aparecerCad(true)
-				, 3000)
+
+			aparecerCad(true)
+			setTimeout(() =>{
+
+				aparecerLogin(false)
+			}, '700')
 		} else {
-			aparecerCad(false)
-			setTimeout(
+
 				aparecerLogin(true)
-				, 3000)
+			setTimeout(() =>{
+
+
+			aparecerCad(false)
+			}, '700')
 		}
 
 	}
 
 	function aparecerLogin(teste) {
 		if (teste) {
-			delay = 1000
-			divLogin.style.display = 'none'
+
+			divLogin.style.animation = 'aparecerCad 1s reverse'
+
+			setTimeout(() => {
+				divLogin.style.display = 'none'
+			}, "900");
+
 		} else {
-			delay = 0
-			divLogin.style.display = 'flex'
+
+			divLogin.style.animation = 'aparecerBaquetaE 1s'
+
+			setTimeout(() => {
+				divLogin.style.display = 'flex'
+			}, "900");
+
 		}
 	}
 
 	function aparecerCad(teste) {
 		if (teste) {
-			delay = 1000
-			divCad.style.display = 'none'
+			divCad.style.animation = 'aparecerBaquetaE 1s reverse'
+			setTimeout(() => {
+				divCad.style.display = 'none'
+			}, "900");
+
 		} else {
-			delay = 0
-			divCad.style.display = 'flex'
+			divCad.style.animation = 'aparecerCad 1s'
+			setTimeout(() => {
+				divCad.style.display = 'flex'
+			}, "900");
 		}
 	}
 </script>
