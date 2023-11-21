@@ -11,7 +11,7 @@
 			padding: 0;
 			box-sizing: border-box;
 		}
-
+/*
 		body{
 			background: darkgray;
 			overflow-x: hidden;
@@ -28,9 +28,7 @@
 		.fundoSVG{
 			
 			background: url('img/linha.svg');
-			aspect-ratio: 960/300;
-			background-position: center;
-			background-repeat: no-repeat;
+			/* aspect-ratio: 960/300; 
 		}
 		.blue{
 			background-color: blue;
@@ -79,15 +77,55 @@
 			transform: translate(-4%, 40%);
 			z-index: -1;
 		}
+*/
+		.conta{
+			max-width: 120;
+			height: 100px;
+			overflow-x: scroll;
+			display: flex;
+			scroll-snap-type: x mandatory;
+		}
+		.card{
+			min-width: 100%;
+/*			height: 500px;*/
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			scroll-snap-align: center;
+		}
+
 
 	</style>
 </head>
 <body>
-	<section class="blue fundoSVG">
+
+	<div class="conta">
+		<div class="card" style="background-color:blue ;">
+			a
+		</div>
+		<div class="card" style="background-color:green ;">
+			b
+		</div>
+		<div class="card" style="background-color:yellow ;">
+			c
+		</div>
+		<div class="card" style="background-color:purple ;">
+			d
+		</div>
+		<div class="card" style="background-color:pink ;">
+			e
+		</div>
+		<div class="card" style="background-color:lavenderblush ;">
+			f
+		</div>
+	</div>
+
+
+	<!-- <section class="blue fundoSVG">
 		<h1>Nice Curves</h1>
 		<p>Lorem, ipsum dolor sit amet consectetur, adipisicing elit. Iure deleniti saepe eius modi commodi doloremque asperiores iste exercitationem quam consequuntur ducimus, porro laudantium, architecto sequi voluptas qui esse rerum, ex.</p>
 	</section>
-	<section class="red fundoSVG">
+	<section class="red ">
 		<h1>Nice Curves</h1>
 		<p>Lorem, ipsum dolor sit amet consectetur, adipisicing elit. Iure deleniti saepe eius modi commodi doloremque asperiores iste exercitationem quam consequuntur ducimus, porro laudantium, architecto sequi voluptas qui esse rerum, ex.</p>
 	</section>
@@ -114,6 +152,6 @@
 	<section class="purple fundoSVG">
 		<h1>Nice Curves</h1>
 		<p>Lorem, ipsum dolor sit amet consectetur, adipisicing elit. Iure deleniti saepe eius modi commodi doloremque asperiores iste exercitationem quam consequuntur ducimus, porro laudantium, architecto sequi voluptas qui esse rerum, ex.</p>
-	</section>
+	</section> -->
 </body>
 </html>
