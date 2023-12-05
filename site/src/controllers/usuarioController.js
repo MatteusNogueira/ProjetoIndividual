@@ -29,8 +29,6 @@ function autenticar(req, res) {
                         });
                     } else if (resultadoAutenticar.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
-                    } else {
-                        res.status(403).send("Mais de um usuário com o mesmo login e senha!");
                     }
                 }
             ).catch(
@@ -44,6 +42,7 @@ function autenticar(req, res) {
 
 }
 
+
 function cadastrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var nome = req.body.nomeServer;
@@ -51,21 +50,71 @@ function cadastrar(req, res) {
     var senha = req.body.senhaServer;
     var dtNasc = req.body.nascimentoServer;
 
-    // Faça as validações dos valores
-    if (nome == undefined) {
-        res.status(400).send("Seu nome está undefined!");
-    } else if (email == undefined) {
-        res.status(400).send("Seu email está undefined!");
-    } else if (senha == undefined) {
-        res.status(400).send("Sua senha está undefined!");
-    } else if (dtNasc == undefined) {
-        res.status(400).send("Sua empresa está undefined!");
-    } else {
+    // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+    usuarioModel.cadastrar(nome, email, senha, dtNasc)
+        .then(
+            function (resultado) {
 
+                usuarioModel.cad2()
+                    .then(
+                        function (resultado2) {
+
+                            if(resultado2.length == 1){
+                                console.log("teste 2");
+
+                                res.json({
+                                    idUser: resultado2[0].idUsuario
+                                });
+
+
+                                console.log(resultado2[0].idUsuario);
+                            }
+                            
+                        }
+                    ).catch(
+
+                        function (erro) {
+                            console.log(erro);
+                            console.log(
+                                "\nHouve um erro ao realizar o cadastro! Erro: ",
+                                erro.sqlMessage
+                            );
+                            res.status(500).json(erro.sqlMessage);
+                        }
+                    );
+
+
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+    
+}
+
+//
+function cadastrarBanda(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var banda = req.body.bandaServer;
+    var estilo = req.body.estiloServer;
+    var cep = req.body.cepServer;
+    var rua = req.body.ruaServer;
+    var cidade = req.body.cidadeServer;
+    var estado = req.body.estadoServer;
+    var id = req.body.idServer;
+
+    console.log(rua, cidade, estado, id, banda, estilo)
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, email, senha, dtNasc)
+        usuarioModel.cadastrarBanda(banda, estilo, cep, rua, cidade, estado, id)
             .then(
                 function (resultado) {
+                    console.log("asldjnasjndlasdn" + JSON.stringify(resultado));
                     res.json(resultado);
                 }
             ).catch(
@@ -78,10 +127,38 @@ function cadastrar(req, res) {
                     res.status(500).json(erro.sqlMessage);
                 }
             );
-    }
+    
 }
+
+function salvar(req, res) {
+    const imagem = req.file.filename;
+    var id = req.body.id;
+    console.log('asodnao');
+    usuarioModel.salvar(imagem, id)
+    .then(resultado => {
+        console.log(resultado);
+      res.status(201).send("Usuario criado com sucesso");
+    }).catch(err => {
+        console.log(err);
+      res.status(500).send(err);
+    });
+  }
+  
+
+  function buscarUsuarioPeloId(req, res) {
+    console.log(req.params.id + 'Aqui deveria estar o id');
+    usuarioModel.buscarUsuarioPeloId(req.params.id)
+    .then(resultado => {
+      res.json(resultado);
+    }).catch(err => {
+      res.status(500).send(err);
+    });
+  }
 
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    cadastrarBanda,
+    salvar,
+    buscarUsuarioPeloId
 }

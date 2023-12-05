@@ -19,7 +19,7 @@ a {
 .header {
   height: 100px;
   width: 100%;
-  background-color: #A62D2d;
+  background-color: black;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -31,6 +31,13 @@ a {
   z-index: 100;
   /* border-bottom: 2px #f2d479 solid; */
   padding: 5px 0;
+  
+}
+.imgFogo{
+  position: absolute;
+  z-index: -1;
+  bottom: 0px;
+  left: -15px;
 }
 
 .header a {
@@ -322,7 +329,7 @@ a {
 
 /* cor e borda da barra de scroll */
 .div_conteudo::-webkit-scrollbar-thumb {
-    background: gold;
+    background: #ffd700;
     border-radius: 10px;
 }
 
@@ -468,20 +475,22 @@ a {
   top: 0;
   right: 0;
   position: fixed;
-  background: #243540cc;
+  background: #CC3F0C88;
   border-radius: 16px 0;
-  box-shadow: 0 4px 30px #243540;
+  
+  box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   transition: 0.5s ease-in-out;
   transition: 0.5s ease-in-out;
   padding-top: 20px;
+
 }
 .abridor{
   position: absolute; 
   left: -50px; 
   top:50%;
-  background-color: #dbba00;
+  background-color: #FEE07C;
   width: 60px;
   height: 60px;
   display: flex;
@@ -503,11 +512,13 @@ a {
   display: none;
 }
 
+
 .btnLogin {
-  background-color: darkred;
+  color: white;
+  background-color: black;
+  border: 2px solid #FEE07C;
   padding: 15px;
-  border: none;
-  border-radius: 10px;
+  border-radius: 15px;
   font-size: 20px;
   margin-top: 20px;
   transition: 0.5s ease-in-out;
@@ -516,6 +527,8 @@ a {
 
 .sidebar:hover {
   width: 300px;
+
+  box-shadow: 0 0 0 100vmax rgba(0, 0, 0, .5);
 }
 
 .sidebar:hover .inpt_side,
@@ -526,7 +539,8 @@ a {
 .input_titulo {
   display: none;
   align-items: center;
-  border: 5px solid darkred;
+  border: 2px solid #FEE07C;
+  background-color: black;
   padding: 15px 0px;
   font-weight: bold;
   font-size: 20px;
@@ -542,8 +556,17 @@ a {
   margin-top: 40px;
   overflow: hidden;
   text-align: center;
+  font-weight: bold;
+  font-size: 20px;
   /* margin-left: 20px; */
   /* background-color: orange; */
+}
+.inptLogin{
+  border-radius: 15px;
+  text-align: center;
+  width: 80%;
+  height: 25px;
+  border: none;
 }
 
 .btnAparecer {
@@ -563,7 +586,28 @@ a {
   }
 }
 
+@keyframes pingoCad {
+  0%{
+    transform: translateY(-100%);
+  }
+  50%{
+    transform: translateY(80px);
+  }
+  75%{
+    transform: translateY(-20px);
+  }
+  100%{
+    transform: translateY(20px);
+  }
+}
 
+
+.imgSide{
+  border-radius: 50%;
+  border: #FEE07C solid 4px;
+  width: fit-content;
+  height: fit-content;
+}
 /*.containerCard{
   position: relative;
   display: inline-block;
