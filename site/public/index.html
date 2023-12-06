@@ -22,10 +22,9 @@
         <li class="itemTom" onclick="trocar('historia')">
           <h3>Historia</h3>
         </li>
-        <li class="itemTom" onclick="trocar('tocar')">
+        <!--<li class="itemTom" onclick="trocar('tocar')">
           <h3>Tocar</h3>
-        </li>
-        <!-- <li class="itemTom">
+        </li><li class="itemTom">
 					<h3>Perfil</h3>
 				</li>
 			-->
@@ -49,16 +48,28 @@
       <div id="pg2" class="pg2">
         <div id="div_dash" class="div_dash">
           <div id="seletor" class="seletor">
-            <div id="selecao" class="selecao">Favoritos</div>
-            <div id="selecao" class="selecao">por estado</div>
-            <div id="selecao" class="selecao"></div>
+            <div
+              id="selecaoFav"
+              class="selecao"
+              onclick="trocarGrafico('div_orientacao')"
+            >
+              Favoritos
+            </div>
+            <div
+              id="selecaoEsta"
+              class="selecao"
+              onclick="trocarGrafico('favoritos')"
+            >
+              igualdade
+            </div>
           </div>
           <div id="graficos" class="graficos">
             <div id="favoritos" class="favoritos">
               <div class="graf-conteudo doughnut">
-                <h1>Banda Favorita</h1>
+                <div id="tituloGraficoEstilo" class="tituloGrafico">asdasd</div>
+                <h1>Estilo Favorito</h1>
                 <canvas id="myChartdoughnutBandaFav" class="cnvs"></canvas>
-                <select id="slcEstiloslc" name="">
+                <select id="slcEstiloslc" class="slcGrafico" name="">
                   <option value="Rock" selected>Selecione uma banda</option>
                   <option value="Rock">Rock</option>
                   <option value="Metal">Metal</option>
@@ -69,12 +80,15 @@
                   <option value="Reggae">Reggae</option>
                   <option value="outros">outros</option>
                 </select>
-                <button onclick="destroiEstilo()">Escolher Estilo</button>
+                <button onclick="destroiEstilo()" class="btnGrafico">
+                  Escolher Estilo
+                </button>
               </div>
               <div class="graf-conteudo doughnut">
-                <h1>Estilo Favorito</h1>
+                <div id="tituloGraficoBanda" class="tituloGrafico">asdasd</div>
+                <h1>Banda Favorita</h1>
                 <canvas id="myChartdoughnutEstiloFav" class="cnvs"></canvas>
-                <select id="slcBandaslc" name="">
+                <select id="slcBandaslc" class="slcGrafico" name="">
                   <option value="metalica">Metalica</option>
                   <option value="Red Hot Chili Peppers">
                     Red Hot Chili Peppers
@@ -105,7 +119,48 @@
                   </option>
                   <option value="outro">outro</option>
                 </select>
-                <button onclick="destroiBanda()">Escolher Banda</button>
+                <button onclick="destroiBanda()" class="btnGrafico">
+                  Escolher Banda
+                </button>
+              </div>
+            </div>
+            <div id="div_orientacao" class="favoritos orientacao" style="display: none">
+              <div class="divInfoGrafico">
+                <h1>Genero na Bateria</h1>
+                <canvas id="myChartdoughnutOrientacao" class="cnvs"></canvas>
+              </div >
+              <div class="divInfoGrafico2" >
+                A igualdade entre homens e mulheres é um princípio fundamental
+                que se estende a todas as áreas da vida, incluindo a música e a
+                expressão artística. Na arte de tocar bateria, a harmonia entre
+                os gêneros é evidente, destacando a capacidade e paixão
+                compartilhadas, independentemente do sexo. Na bateria, não
+                existem limites impostos pelo gênero. Cada batida ressoa com a
+                liberdade de expressão, onde homens e mulheres compartilham a
+                mesma paixão por criar ritmos envolventes. O som pulsante das
+                baquetas sobre as peles e pratos não conhece barreiras de
+                gênero, refletindo a universalidade da linguagem musical.
+                <br /><br />
+
+                Ao se sentar atrás do kit de bateria, homens e mulheres têm a
+                oportunidade de desafiar estereótipos, redefinindo as
+                expectativas culturais e promovendo a igualdade. Cada batida é
+                uma afirmação de que talento e habilidade transcendem as
+                distinções de gênero, mostrando que o domínio da bateria é
+                acessível a qualquer pessoa dedicada, independentemente do sexo.
+                <br /><br />
+                A igualdade de gênero na bateria não é apenas uma questão de
+                representação, mas também uma celebração da diversidade de
+                estilos e abordagens que cada percussionista traz ao
+                instrumento. Homens e mulheres contribuem de maneiras únicas
+                para a riqueza da música, acrescentando camadas de criatividade
+                e inovação. <br /><br />
+                Neste palco igualitário, a bateria se torna um símbolo poderoso
+                da unidade, superando as divisões de gênero. Cada batida,
+                independente do gênero de quem a toca, é uma expressão autêntica
+                da individualidade e talento. A igualdade na bateria não é
+                apenas uma aspiração, mas uma realidade vibrante que ressoa com
+                o espírito inclusivo da música.
               </div>
             </div>
           </div>
@@ -115,7 +170,7 @@
 
     <div class="sidebar">
       <div class="abridor">| | |</div>
-
+      <div id="div_mensagem" class="divErro"></div>
       <div class="divCad" id="divLogin">
         <div class="input_titulo inpt_side">Login</div>
         <div class="inpt_side">
@@ -144,7 +199,7 @@
       <div class="divCad" id="divPerfil">
         <div class="input_titulo inpt_side">Perfil</div>
         <div class="inpt_side imgSide" id="divFoto">
-          <img src="img/macaco.jpg" width="100%" height="200px" />
+          <img src="img/default.png" width="100%" height="200px" />
         </div>
         <div class="inpt_side">
           <span style="display: flex; flex-direction: column">
@@ -187,6 +242,15 @@
         <div class="input_titulo inpt_side">Cadastro</div>
         <div class="inpt_side">
           Nome <input class="inptLogin" type="email" id="nomeCad" name="" />
+        </div>
+        <div class="inpt_side">
+          Orientação sexual
+          <select name="slcOrientacao" class="slcGrafico" id="slcOrientacao">
+            <option value="Masculino">Masculino</option>
+            <option value="Feminimo">Feminimo</option>
+            <option value="outros">outros</option>
+            <input type="text" id="inpt_Orientacao" style="display: none" />
+          </select>
         </div>
         <div class="inpt_side">
           Email <input class="inptLogin" type="email" id="emailCad" name="" />
@@ -232,7 +296,7 @@
         </div>
         <div class="inpt_side">
           Banda Favorita:
-          <select id="slcBanda" name="">
+          <select id="slcBanda" name="" class="slcGrafico">
             <option value="metalica">Metalica</option>
             <option value="Red Hot Chili Peppers">Red Hot Chili Peppers</option>
             <option value="The Beatles">The Beatles</option>
@@ -264,7 +328,7 @@
         </div>
         <div class="inpt_side">
           Estilo de musica favorita:
-          <select id="slcEstilo" name="">
+          <select id="slcEstilo" name="" class="slcGrafico">
             <option value="Rock" selected>Selecione uma banda</option>
             <option value="Rock">Rock</option>
             <option value="Metal">Metal</option>
@@ -302,8 +366,8 @@
 
     if (imgUser != "semFoto") {
       divFoto.innerHTML = `
-            <img src="img/perfil/${imgUser}" width="100%" height="200px">
-			`;
+              <img src="img/perfil/${imgUser}" width="100%" height="200px">
+  			`;
     }
   }
 
@@ -404,8 +468,6 @@
     fetch("/usuarios/cadastrarBanda", {
       method: "POST",
       headers: {
-        Accept: text / html,
-        Cookie: (Version = 1),
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -455,9 +517,13 @@
     var confirmacaoSenhaVar = confsenhaCad.value;
     var nascVar = dtNascCad.value;
     var validacao = 0;
+    var sexo = slcOrientacao.value;
     // alert(nomeVar)
     // Enviando o valor da nova input
-
+    if (sexo < 1 || sexo == undefined) {
+      validacao = 1;
+      div_mensagem.innerHTML += `-Coloque a sua orientação sexual<br>`;
+    }
     if (
       nomeVar.indexOf("#") >= 0 ||
       nomeVar.indexOf("@") >= 0 ||
@@ -467,7 +533,6 @@
       nomeVar.indexOf("$") >= 0 ||
       nomeVar.indexOf("&") >= 0
     ) {
-      div_mensagem.style.display = "flex";
       div_mensagem.innerHTML += `-Não pode haver caracter especial no nome da empresa<br>`;
 
       validacao = 1;
@@ -477,13 +542,11 @@
 
     if (senhaVar.length < 8) {
       div_mensagem.innerHTML += `-A senha deve possuir no mínimo 8 caracteres <br>`;
-      div_mensagem.style.display = "flex";
       validacao = 1;
     }
 
     if (senhaVar.indexOf(" ") >= 0) {
       div_mensagem.innerHTML += `-Não pode conter espaços na senha <br>`;
-      div_mensagem.style.display = "flex";
       validacao = 1;
     }
 
@@ -501,7 +564,6 @@
       )
     ) {
       div_mensagem.innerHTML += `-A senha deve possuir no mínimo 1 caracter especial <br>`;
-      div_mensagem.style.display = "flex";
       validacao = 1;
     }
 
@@ -514,23 +576,27 @@
 
     if (!(emailVar.indexOf("@") >= 1)) {
       div_mensagem.innerHTML += `-Deve conter @ no email<br>`;
-      div_mensagem.style.display = "flex";
       validacao = 1;
     }
     if (!(emailVar.indexOf(".com") >= 1)) {
       div_mensagem.innerHTML += `-Deve conter .com no email <br>`;
-      div_mensagem.style.display = "flex";
       validacao = 1;
     }
     if (emailVar.indexOf(" ") >= 0) {
       div_mensagem.innerHTML += `-Não pode conter espaços na email <br>`;
-      div_mensagem.style.display = "flex";
       validacao = 1;
     }
 
     if (validacao == 1) {
+      div_mensagem.style.display = "flex";
+      setTimeout(() => {
+        div_mensagem.style.display = "none";
+      }, 5000);
+
       return false;
     } else {
+      div_mensagem.style.display = "none";
+
       fetch("/usuarios/cadastrar", {
         method: "POST",
         headers: {
@@ -543,6 +609,7 @@
           emailServer: emailVar,
           senhaServer: senhaVar,
           nascimentoServer: nascVar,
+          sexoServer: sexo,
         }),
       })
         .then(function (resposta) {
@@ -594,6 +661,7 @@
   }
   function buscarMedidasEstilo() {
     var estilo = slcEstiloslc.value;
+    tituloGraficoEstilo.innerHTML = estilo;
     if (estilo == "" || estilo == undefined) {
       estilo = "Rock";
     }
@@ -714,21 +782,23 @@
       });
   }
 
-
   var dadosGrafBandaFav = [];
   var labelGrafBandaFav = [];
   var bgColorBandaFav = [];
   function buscarMedidasBanda() {
-    var banda = 'Red Hot Chili Peppers';
+    var banda = slcBandaslc.value;
+    tituloGraficoBanda.innerHTML = banda;
     if (banda == "" || banda == undefined) {
-      banda = "Metalica";
+      banda = "metalica";
     }
+
     fetch(`/medidas/ultimasBanda/${banda}`, { cache: "no-store" })
       .then(function (response) {
         if (response.ok) {
           response.json().then(function (resposta) {
             console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
             resposta.reverse();
+
             while (dadosGrafBandaFav.length) {
               dadosGrafBandaFav.pop();
               labelGrafBandaFav.pop();
@@ -826,9 +896,53 @@
                 bgColorBandaFav.push(quantidadeAtual[2]);
               }
             }
+            plotarGraficosBanda();
+          });
+        } else {
+          console.error("Nenhum dado encontrado ou erro na API");
+        }
+      })
+      .catch(function (error) {
+        console.error(
+          `Erro na obtenção dos dados p/ gráfico: ${error.message}`
+        );
+      });
+  }
+
+  var dadosGrafSexo = [];
+  var bgColorSexo = [];
+  function buscarMedidasSexo() {
+    fetch(`/medidas/ultimasOrientacoes`, { cache: "no-store" })
+      .then(function (response) {
+        if (response.ok) {
+          response.json().then(function (resposta) {
+            console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+            resposta.reverse();
+            while (dadosGrafSexo.length) {
+              dadosGrafSexo.pop();
+              bgColorSexo.pop();
+            }
+            var estadosVetor = [];
+            var Masc = resposta[0].Masculino;
+            estadosVetor.push(`#57A773,${Masc}`);
+
+            var Feminimo = resposta[0].Feminimo;
+            estadosVetor.push(`#F96900,${Feminimo}`);
+
+            var Outros = resposta[0].Outros;
+            estadosVetor.push(`#595959,${Outros}`);
+
+            for (var i = 0; i < estadosVetor.length; i++) {
+              var quantidadeAtual = estadosVetor[i];
+              quantidadeAtual = quantidadeAtual.split(",");
+              console.log(quantidadeAtual);
+              if (quantidadeAtual[1] > 0) {
+                dadosGrafSexo.push(Number(quantidadeAtual[1]));
+                bgColorSexo.push(quantidadeAtual[0])
+              }
+            }
             //plotarGrafico(resposta, idAquario);
-            plotarGraficosEstilo();
-			plotarGraficosBanda();
+            plotarGraficosOrientacao();
           });
         } else {
           console.error("Nenhum dado encontrado ou erro na API");
@@ -920,8 +1034,8 @@
           const usuario = json[0].imagem_perfil;
           console.log(usuario);
           divFoto.innerHTML = `
-            <img src="img/perfil/${usuario}" width="100%" height="200px">
-			`;
+              <img src="img/perfil/${usuario}" width="100%" height="200px">
+  			`;
           sessionStorage.IMG_USUARIO = usuario;
           lblFoto.style.display = "none";
         });
@@ -939,7 +1053,7 @@
   function destroiBanda() {
     //MyChart1.destroy();
     MyChart2.destroy();
-    //buscarMedidasBanda();
+    buscarMedidasBanda();
   }
   let MyChart1;
   let MyChart2;
@@ -980,5 +1094,61 @@
         ],
       },
     });
+  }
+
+  function plotarGraficosOrientacao() {
+    const ctx7 = document.getElementById("myChartdoughnutOrientacao");
+
+    Chart.defaults.font.size = 16;
+    MyChart2 = new Chart(ctx7, {
+      type: "doughnut",
+      data: {
+        labels: ['masculino', 'Feminino', 'Outro'],
+        datasets: [
+          {
+            label: "Sexo",
+            data: dadosGrafSexo,
+            backgroundColor: bgColorSexo,
+          },
+        ],
+      },
+    });
+  }
+
+  function trocarGrafico(grafico) {
+    if (grafico == "div_orientacao") {
+      div_orientacao.style.animation = "aparecerCad 1s reverse ";
+      selecaoEsta.style.backgroundColor = 'black';
+      selecaoEsta.style.color = 'white';
+
+      setTimeout(() => {
+        div_orientacao.style.display = "none";
+      }, 900);
+
+      favoritos.style.animation = "aparecerCad 1s ";
+
+      selecaoFav.style.backgroundColor = '#fee07c'
+      selecaoFav.style.color = 'black';
+      setTimeout(() => {
+        favoritos.style.display = "flex";
+      }, 900);
+    } else if (grafico == "favoritos") {
+      favoritos.style.animation = "aparecerCad 1s reverse ";
+      selecaoFav.style.backgroundColor = 'black';
+      selecaoFav.style.color = 'white';
+
+      setTimeout(() => {
+        favoritos.style.display = "none";
+      }, 900);
+      buscarMedidasSexo();
+      div_orientacao.style.animation = "aparecerCad 1s ";
+
+      selecaoEsta.style.backgroundColor = '#fee07c'
+      selecaoEsta.style.color = 'black';
+
+      setTimeout(() => {
+        div_orientacao.style.display = "flex";
+      }, 900);
+    }
   }
 </script>

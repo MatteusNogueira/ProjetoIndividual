@@ -60,7 +60,15 @@ select
 	(select count(estado) from endereco join usuario on fkUser = idUsuario where estado = 'TO' AND bandaFav = 'Rock') as 'TO'
 		from endereco limit 1;
 
+	
+select 
+	(select count(sexo) from usuario where sexo = 'outros') as Outros,
+	(select count(sexo) from usuario where sexo = 'Masculino') as Masculino,
+	(select count(sexo) from usuario where sexo = 'Feminimo') as Feminimo
+		from usuario limit 1;
 
-        
+insert into endereco values(null, '21670170', 'Rio de Janeiro', 'RJ', 'Rua Operária', 12);
+insert into usuario (nome, email, senha, dtNasc, sexo, bandaFav, estiloFav)values('Romar', 'romar@gmail.com','Romar@123', current_timestamp(), 'Masculino','metalica', 'Rock');
+update usuario set sexo = 'outros' where idUsuario = 12;
 select * from usuario;
 select * from endereco;

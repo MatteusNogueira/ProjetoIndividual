@@ -50,9 +50,10 @@ function cadastrar(req, res) {
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
     var dtNasc = req.body.nascimentoServer;
+    var sexo = req.body.sexoServer;
 
     // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-    usuarioModel.cadastrar(nome, email, senha, dtNasc)
+    usuarioModel.cadastrar(nome, email, senha, dtNasc, sexo)
         .then(
             function (resultado) {
 

@@ -71,7 +71,20 @@ function buscarUltimasMedidasBanda(banda) {
   console.log("Executando a instrução SQL2 asçdasijd: \n" + instrucaoSql);
   return database.executar(instrucaoSql);
 }
+
+
+function buscarUltimasMedidasSexo() {
+  instrucaoSql = `select 
+  (select count(sexo) from usuario where sexo = 'outros') as Outros,
+  (select count(sexo) from usuario where sexo = 'Masculino') as Masculino,
+  (select count(sexo) from usuario where sexo = 'Feminimo') as Feminimo
+    from usuario limit 1;;`;
+
+  console.log("Executando a instrução SQL2 asçdasijd: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
 module.exports = {
   buscarUltimasMedidas,
-  buscarUltimasMedidasBanda
+  buscarUltimasMedidasBanda,
+  buscarUltimasMedidasSexo
 };

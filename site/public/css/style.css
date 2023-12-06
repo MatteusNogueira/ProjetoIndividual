@@ -8,8 +8,9 @@
   box-sizing: border-box;
 }
 
-body {
+.body {
   overflow-x: hidden;
+  background-color: #27282c;
 }
 
 a {
@@ -147,13 +148,16 @@ input[type="file"] {
 
 .mainH {
   margin-top: 100px;
-  height: Calc(100vh - 100px);
   width: 100%;
   display: flex;
   justify-content: center;
   flex-direction: column;
-  background-color: black;
+  background-color: #27282c;
   color: white;
+}
+
+.carousel{
+  height: 500px;
 }
 
 .pg1 {
@@ -176,6 +180,34 @@ input[type="file"] {
 .pg2 {
   height: Calc(100vh - 100px);
   width: 100%;
+}
+
+.pg2H{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  row-gap: 30px;
+  margin-top: 150px;
+}
+.pg2H div{
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background: #f2d47999;
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4.6px);
+  -webkit-backdrop-filter: blur(4.6px);
+  border: 4px solid gold;
+}
+
+.pg2H div p {
+  font-weight: 300;
+  font-size: 1.2em;
 }
 
 .div_dash {
@@ -205,12 +237,13 @@ input[type="file"] {
 }
 .selecao {
   width: 90%;
-  height: 30%;
+  height: 40%;
   display: flex;
   align-items: center;
   justify-content: center;
   border: 2px solid white;
   cursor: pointer;
+  transition: 2s;
 }
 
 .favoritos {
@@ -221,6 +254,26 @@ input[type="file"] {
   align-items: center;
 }
 
+.orientacao{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+
+}
+.divInfoGrafico{
+  min-width: 45%;
+  text-align: center;
+  height: 85%;
+}
+.divInfoGrafico2{
+  width: 45%;
+  border: 3px black solid;
+  padding: 10px;
+  border-radius: 20px;
+  font-weight: 200;
+  font-size: 1.1em;
+}
 .doughnut {
   display: flex;
   flex-direction: column;
@@ -228,6 +281,61 @@ input[type="file"] {
   text-align: center;
   height: 100%;
   width: 35%;
+}
+
+.tituloGrafico{
+  position: absolute;
+  transform: translate(50% 50%);
+  width: 25%;
+  height: 40px;
+  text-align: center;
+  font-weight: 300;
+  font-size: 3em;
+}
+
+.slcGrafico{
+  width: 50%;
+  align-self: center;
+  font-size: 1.2em;
+  background-color: #27282c;
+  color: white;
+  margin: 15px 0;
+  border-radius: 15px;
+  border: none;
+  text-align: center;
+}
+.btnGrafico{
+  background: none;
+  border: 2px solid black;
+  text-transform: uppercase;
+  padding: 12px 20px;
+  width: 50%;
+  cursor: pointer;
+  transition: corPula 0,4s linear;
+  position: relative;
+  align-self: center;
+  z-index: 1;
+}
+.btnGrafico:hover{
+  color: white;
+}
+.btnGrafico::before{
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  z-index: -1;
+  transition: transform 0.65s;
+  transform-origin: 0 0;
+  transition-timing-function: cubic-bezier(0.5,1.6,0.4,0.7);
+  transform: scaleX(0);
+}
+
+.btnGrafico:hover::before{
+  transform: scaleX(1);
 }
 
 .curva {
@@ -313,63 +421,6 @@ input[type="file"] {
 .imgD {
   animation: aparecerBaquetaD 1.5s forwards;
 }
-/* 
-.pg2 {
-  display: flex;
-  flex-direction: column;
-  height: fit-content;
-  width: 100%;
-  /* overflow-y: hidden; 
-  
-}
-.pg2::before{
-  content: '';
-  position: absolute;
-  width: 50%;
-  height: 100%;
-}
-.pg2 h1 {
- align-self: center;
-}
-/* 
-.backD{
-  background-color: #A62D2d;
-  transform: translateX(100%);
-  
-  background: linear-gradient(
-    to bottom, 
-    #A62D2d 0%, 
-    #A62D2d 33.29%, 
-    #243540 33.3%, 
-    #243540 66.6%, 
-    #A62D2d 66.7%, 
-    #A62D2d 100%
-  ); 
-}
-.backE{
-  background-color: #243540;
-/*   
-  background: linear-gradient(
-    to bottom, 
-    #243540 0%, 
-    #243540 33.29%, 
-    #A62D2d 33.3%, 
-    #A62D2d 66.6%, 
-    #243540 66.7%, 
-    #243540 100%
-  ); 
-
-}
-.backE, .backD{
-  /*position: absolute;
-  width: 50%;
-  height: 192.13%;
-  display: flex;
-  flex-direction: row;
-  height: 100%;
-  width: 50%;
-  position: absolute;
-} */
 
 .cont {
   /* FONT-WEIGHT: 500; */
@@ -399,11 +450,11 @@ input[type="file"] {
   /* padding-top: 0px; */
   /* padding-bottom: 20px; */
   /* background-color: #243540; */
-  overflow-x: scroll;
-  scroll-snap-type: x mandatory;
   width: 100vw;
+  height: 400px;
   padding-bottom: 40px;
   margin-top: 100px;
+  background-color:#27282c;
 }
 .contColuna {
   display: flex;
@@ -592,6 +643,20 @@ h1 {
   padding-left: 15px;
   align-items: center;
   border-radius: 5px;
+}
+
+.divErro{
+  position: absolute;
+  height: fit-content;
+  max-width: 90%;
+  padding: 7px;
+  border-radius: 10px;
+  background-color: #fee07c;
+  border: 3px solid black;
+  top: 30px;
+  margin: auto;
+  left: 5%;
+  display: none;
 }
 
 .divCad {
