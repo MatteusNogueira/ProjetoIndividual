@@ -28,6 +28,12 @@
       crossorigin="anonymous"
     ></script>
     <title>Site Bateria</title>
+
+	<style>
+		.container{
+			margin: 0;
+		}
+	</style>
   </head>
 
   <body>
@@ -56,7 +62,7 @@
     </div>
     <div class="mainH">
       <div class="container2" style="align-self: center">
-        <h1>Hall da fama dos Bateristas</h1>
+        <h1 style="margin: 0;">Hall da fama dos Bateristas</h1>
       </div>
       <div class="div_conteudo">
         <div
@@ -85,7 +91,7 @@
               <div class="contColuna">
                 <div class="cont">
                   <img src="img/bateristas/johnBonham.jpg" class="imgBatera" />
-                  <div class="container d">
+                  <div class="container ">
                     <h2>
                       John Henry Bonham: O Baterista Lendário do Led Zeppelin
                     </h2>
@@ -114,7 +120,7 @@
             <div class="carousel-item">
               <div class="contColuna">
                 <div class="cont">
-                  <div class="container e">
+                  <div class="container ">
                     <h2>Dave Lombardo: Pioneiro da Bateria no Thrash Metal</h2>
 
                     <p>
@@ -148,7 +154,7 @@
                 <div class="cont">
                   <img src="img/bateristas/keithMoon.jpg" class="imgBatera" />
 
-                  <div class="container d">
+                  <div class="container ">
                     <h2>Keith Moon: O Excêntrico Baterista dos The Who</h2>
                     <p>
                       Nascido em 23 de agosto de 1946 e falecido em 7 de
@@ -175,7 +181,7 @@
             <div class="carousel-item">
               <div class="contColuna">
                 <div class="cont">
-                  <div class="container e">
+                  <div class="container ">
                     <h2>Neil Peart: O Virtuoso da Bateria do Rush</h2>
 
                     <p>
@@ -208,7 +214,7 @@
                 <div class="cont">
                   <img src="img/bateristas/billWard.jpg" class="imgBatera" />
 
-                  <div class="container d">
+                  <div class="container ">
                     <h2>Bill Ward: O Baterista Fundador do Black Sabbath</h2>
 
                     <p>
@@ -236,7 +242,7 @@
             <div class="carousel-item">
               <div class="contColuna">
                 <div class="cont">
-                  <div class="container e">
+                  <div class="container ">
                     <h2>Ian Paice: A Batida Poderosa do Deep Purple</h2>
 
                     <p>
@@ -264,35 +270,7 @@
             <div class="carousel-item">
               <div class="contColuna">
                 <div class="cont">
-                  <div class="container e">
-                    <h2>Ian Paice: A Batida Poderosa do Deep Purple</h2>
-
-                    <p>
-                      Nascido em 29 de junho de 1948, Ian Paice é um respeitado
-                      baterista britânico e um dos membros fundadores da icônica
-                      banda de rock Deep Purple. Com uma carreira que se estende
-                      por décadas, Paice é reconhecido por sua habilidade
-                      técnica, energia inigualável e contribuições cruciais para
-                      o som característico do Deep Purple.<br /><br />
-
-                      A destreza de Paice na bateria é evidente em álbuns
-                      clássicos da banda, como "Machine Head" e "In Rock". Sua
-                      habilidade em criar ritmos complexos e emocionantes
-                      adiciona uma dimensão única à música do Deep Purple,
-                      tornando-o uma figura central no cenário do rock
-                      progressivo e hard rock.
-                    </p>
-                  </div>
-
-                  <img src="img/bateristas/ianPaice.jpg" class="imgBatera" />
-                </div>
-              </div>
-            </div>
-
-            <div class="carousel-item">
-              <div class="contColuna">
-                <div class="cont">
-                  <div class="container e">
+                  <div class="container ">
                     <h2>
                       Mikkey Dee: O Poder na Bateria do Motörhead e Scorpions
                     </h2>
@@ -323,7 +301,7 @@
                 <div class="cont">
                   <img src="img/bateristas/larsUlrich.jpg" class="imgBatera" />
 
-                  <div class="container d">
+                  <div class="container ">
                     <h2>Lars Ulrich: A Batida Pioneira do Metallica</h2>
 
                     <p>
@@ -349,7 +327,7 @@
             <div class="carousel-item">
               <div class="contColuna">
                 <div class="cont">
-                  <div class="container e">
+                  <div class="container">
                     <h2>Tommy Lee: O Baterista Inovador do Mötley Crüe</h2>
 
                     <p>
@@ -404,269 +382,560 @@
 
     <div class="sidebar">
       <div class="abridor">| | |</div>
-
+  
       <div class="divCad" id="divLogin">
-        <div class="input_titulo inpt_side">Login</div>
-        <div class="inpt_side">
-          Email <input type="email" id="emailLogin" name="" />
-        </div>
-        <div class="inpt_side">
-          Senha <input type="password" id="senhaLogin" name="" />
-        </div>
-        <div class="inpt_side">
-          <button class="btnLogin" onclick="entrar()">Logar</button><br /><br />
-          <a onclick="aparecer()" class="btnAparecer"
-            ><u><i>Não possui cadastro? clique aqui</i></u></a
-          >
-        </div>
+          <div class="input_titulo inpt_side">
+              Login
+          </div>
+          <div class="inpt_side">
+              Email <input class="inptLogin" type="email" id="emailLogin" name="">
+          </div>
+          <div class="inpt_side">
+              Senha <input class="inptLogin" type="password" id="senhaLogin" name="">
+          </div>
+          <div class="inpt_side">
+              <br>
+        <a href="#" class="buttonTeste" onclick="entrar()" style="--colorBack:#FEE07C"><span>Logar</span><i></i></a>
+              <br><br>
+              <a onclick="aparecer()" class="btnAparecer"><u><i>Não possui cadastro? clique aqui</i></u></a>
+          </div>
       </div>
-
+  
       <div class="divCad" id="divPerfil">
-        <div class="input_titulo inpt_side">Perfil</div>
-        <div class="inpt_side">
-          <img src="img/macaco.jpg" />
-        </div>
-        <div class="inpt_side">
-          <span id="spnNome"></span>
-        </div>
-        <div class="inpt_side">
-          <span id="spnEmail"></span>
-        </div>
-        <div class="inpt_side">
-          <button class="btnLogin" onclick="sair()">sair</button>
-        </div>
+          <div class="input_titulo inpt_side">
+              Perfil
+          </div>
+          <div class="inpt_side imgSide" id="divFoto">
+              <img src="img/macaco.jpg" width="100%" height="200px">
+          </div>
+      <div class="inpt_side">
+        <span style="display: flex; flex-direction: column;">
+        <!--<input name="foto" id="fotoTroca" type="file" style="display: none;"/>-->
+        <label for="fotoTroca" id="lblFoto" style="display: none;">Enviar arquivo</label>
+              <input type="file" name="foto" id="fotoTroca">
+      </span>
+        <br>
+        <a href="#" class="buttonPerfil" onclick="mudarfoto()" style="--colorBack:#FEE07C"><span>Mudar foto de perfil</span><i></i></a>
+        <br>
       </div>
-
-      <div class="divCad" id="divCad" style="display: none">
-        <div class="input_titulo inpt_side">Cadastro</div>
-        <div class="inpt_side">
-          Nome <input type="email" id="nomeCad" name="" />
-        </div>
-        <div class="inpt_side">
-          Email <input type="email" id="emailCad" name="" />
-        </div>
-        <div class="inpt_side">
-          Senha <input type="password" id="senhaCad" name="" />
-        </div>
-        <div class="inpt_side">
-          Confirmar Senha <input type="password" id="confsenhaCad" name="" />
-        </div>
-        <!-- <div class="inpt_side">
-                CEP <input type="text" id="cepCad" name="">
-            </div>
-            <div class="inpt_side">
-                Numero <input type="email" id="numeroCad" name="">
-            </div>
-            <div class="inpt_side">
-                Complemento <input type="email" id="complementoCad" name="">
-            </div> -->
-        <div class="inpt_side">
-          Data de nascimento <input type="date" id="dtNascCad" name="" />
-        </div>
-        <!-- <div class="inpt_side">
-                Quantos anos começou a tocar bateria? <input type="email" id="comecoCad" name="">
-            </div>
-            <div class="inpt_side">
-                Marcafavoria <input type="email" id="emailCad" name="">
-            </div> -->
-        <div class="inpt_side">
-          <button onclick="cadastrar()" class="btnLogin">Cadastrar</button>
-          <br /><br />
-          <a onclick="aparecer()" class="btnAparecer"
-            ><u><i>Já possui um cadastro? clique aqui</i></u></a
-          >
-        </div>
+          <div class="inpt_side">
+              <span id="spnNome"></span>
+          </div>
+          <div class="inpt_side">
+              <span id="spnEmail"></span>
+          </div>
+          <div class="inpt_side">
+              <br>
+        <a href="#" class="buttonTeste" onclick="sair()" style="--colorBack:#FEE07C"><span>Sair</span><i></i></a>
+              <br>
+          </div>
       </div>
-    </div>
+  
+      <div class="divCad" id="divCad" style="display: none;">
+          <div class="input_titulo inpt_side">
+              Cadastro
+          </div>
+          <div class="inpt_side">
+              Nome <input class="inptLogin" type="email" id="nomeCad" name="">
+          </div>
+          <div class="inpt_side">
+              Email <input class="inptLogin" type="email" id="emailCad" name="">
+          </div>
+          <div class="inpt_side">
+              Senha <input class="inptLogin" type="password" id="senhaCad" name="">
+          </div>
+          <div class="inpt_side">
+              Confirmar Senha <input class="inptLogin" type="password" id="confsenhaCad" name="">
+          </div>
+          <div class="inpt_side">
+              Data de nascimento <input type="date" id="dtNascCad" name="">
+          </div>
+          <div class="inpt_side">
+              <br>
+        <a href="#" class="buttonTeste" onclick="cadastrar()" style="--colorBack:#FEE07C"><span>Cadastrar</span><i></i></a>
+              <br><br>
+              <a onclick="aparecer()" class="btnAparecer"><u><i>Já possui um cadastro? clique aqui</i></u></a>
+          </div>
+      </div>
+  
+    <div class="divCad" id="divCad2" style="display: none;" >
+          <div class="input_titulo inpt_side">
+              Cadastro
+          </div>
+          <div class="inpt_side">
+              Cep <input class="inptLogin" type="email" id="cepCad" name="" maxlength="8">
+          </div>
+          <div class="inpt_side">
+            Banda Favorita: 
+        <select id="slcBanda" name="">
+          <option value="metalica">Metalica</option>
+          <option value="Red Hot Chili Peppers">Red Hot Chili Peppers</option>
+          <option value="The Beatles">The Beatles</option>
+          <option value="The Rolling Stones">The Rolling Stones</option>
+          <option value="AC/DC">AC/DC</option>
+          <option value="Guns N' Roses">Guns N' Roses</option>
+          <option value="Black Sabbath">Black Sabbath</option>
+          <option value="Led Zeppelin">Led Zeppelin</option>
+          <option value="The who">The who</option>
+          <option value="Nirvana">Nirvana</option>
+          <option value="Pink Floyd">Pink Floyd</option>
+          <option value="Queen">Queen</option>
+          <option value="U2">U2</option>
+          <option value="The Doors">The Doors</option>
+          <option value="Pearl Jam">Pearl Jam</option>
+          <option value="Journey">Journey</option>
+          <option value="Aerosmith">Aerosmith</option>
+          <option value="Foo Fighters">Foo Fighters</option>
+          <option value="Van Halen">Van Halen</option>
+          <option value="Green Day">Green Day</option>
+          <option value="Bon Jovi">Bon Jovi</option>
+          <option value="Def Leppard">Def Leppard</option>
+          <option value="Boston">Boston</option>
+          <option value="Joan Jett and the Blackhearts">Joan Jett and the Blackhearts</option>
+          <option value="outro">outro</option>
+        </select>
+          </div>
+          <div class="inpt_side">
+            Estilo de musica favorita: 
+        <select id="slcEstilo" name="">
+          <option value="Rock" selected>Selecione uma banda</option>
+          <option value="Rock">Rock</option>
+          <option value="Metal">Metal</option>
+          <option value="Punk">Punk</option>
+          <option value="Jazz">Jazz</option>
+          <option value="Pop">Pop</option>
+          <option value="Blues">Blues</option>
+          <option value="Reggae">Reggae</option>
+          <option value="outros">outros</option>
+        </select>
+          </div>
+          <div class="inpt_side">
+              <br>
+        <a href="#" class="buttonTeste" onclick="cadastrarBanda()" style="--colorBack:#FEE07C"><span>Cadastrar</span><i></i></a>
+              <br><br>
+          </div>
+      </div>  
   </body>
 </html>
 
 <script>
-  if (sessionStorage.LOGADO == 1) {
-    divLogin.style.display = "none";
-    divPerfil.style.display = "flex";
+ if (sessionStorage.LOGADO == 1) {
+		divLogin.style.display = 'none';
+		divPerfil.style.display = 'flex'
 
-    spnNome.innerHTML = sessionStorage.NOME_USUARIO;
-    spnEmail.innerHTML = sessionStorage.EMAIL_USUARIO;
-  }
+		spnNome.innerHTML = sessionStorage.NOME_USUARIO;
+		spnEmail.innerHTML = sessionStorage.EMAIL_USUARIO;
+		var imgUser = sessionStorage.IMG_USUARIO;
 
-  function trocar(pagina) {
-    window.location.href = `${pagina}.html`;
-  }
-  function sair() {
-    sessionStorage.LOGADO = 0;
-    window.location = "index.html";
-  }
+		if(imgUser != "semFoto"){
+			divFoto.innerHTML = `
+            <img src="img/perfil/${imgUser}" width="100%" height="200px">
+			`;
+		}
 
+	}
+
+	function trocar(pagina) {
+		window.location.href = `${pagina}.html`
+	}
+	function sair() {
+		sessionStorage.LOGADO = 0;
+		window.location = "historia.html";
+		sessionStorage.clear();
+
+	}
   function mudarBate() {}
 
   function entrar() {
-    var emailVar = emailLogin.value;
-    var senhaVar = senhaLogin.value;
+		var emailVar = emailLogin.value;
+		var senhaVar = senhaLogin.value;
 
-    if (emailVar == "" || senhaVar == "") {
-      alert("(Mensagem de erro para todos os campos em branco)");
-      return false;
-    } else {
-      setInterval(sumirMensagem, 5000);
-    }
+		if (emailVar == "" || senhaVar == "") {
+			alert("(Mensagem de erro para todos os campos em branco)");
+			return false;
+		}
 
-    console.log("FORM LOGIN: ", emailVar);
-    console.log("FORM SENHA: ", senhaVar);
+		console.log("FORM LOGIN: ", emailVar);
+		console.log("FORM SENHA: ", senhaVar);
 
-    fetch("/usuarios/autenticar", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        emailServer: emailVar,
-        senhaServer: senhaVar,
-      }),
-    })
-      .then(function (resposta) {
-        console.log("ESTOU NO THEN DO entrar()!");
+		fetch("/usuarios/autenticar", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify({
+				emailServer: emailVar,
+				senhaServer: senhaVar
+			})
+		}).then(function (resposta) {
+			console.log("ESTOU NO THEN DO entrar()!")
 
-        if (resposta.ok) {
-          console.log(resposta);
+			if (resposta.ok) {
+				console.log(resposta);
 
-          resposta.json().then((json) => {
-            console.log(json);
-            console.log(JSON.stringify(json));
-            sessionStorage.EMAIL_USUARIO = json.email;
-            sessionStorage.NOME_USUARIO = json.nome;
-            sessionStorage.LOGADO = 1;
-            sessionStorage.ID_USUARIO = json.idUsuario;
-            sessionStorage.DTNASC = json.dtNasc;
+				resposta.json().then(json => {
+					console.log(json);
+					console.log(JSON.stringify(json));
+					sessionStorage.EMAIL_USUARIO = json.email;
+					sessionStorage.NOME_USUARIO = json.nome;
+					sessionStorage.LOGADO = 1;
+					sessionStorage.ID_USUARIO = json.idUsuario;
+					sessionStorage.IMG_USUARIO = json.img;
+					sessionStorage.DTNASC = json.dtNasc;
 
-            setTimeout(function () {
-              window.location = "index.html";
-            }, 1000); // apenas para exibir o loading
-          });
-        } else {
-          console.log("Houve um erro ao tentar realizar o login!");
+					setTimeout(function () {
+						window.location = "historia.html";
+					}, 1000); // apenas para exibir o loading
 
-          resposta.text().then((texto) => {
-            console.error(texto);
-          });
-        }
-      })
-      .catch(function (erro) {
-        console.log(erro);
-      });
+				});
 
-    return false;
-  }
+			} else {
 
-  function cadastrar() {
-    //Recupere o valor da nova input pelo nome do id
-    // Agora vá para o método fetch logo abaixo
-    var nomeVar = nomeCad.value;
-    var emailVar = emailCad.value;
-    var senhaVar = senhaCad.value;
-    var confirmacaoSenhaVar = confsenhaCad.value;
-    var nascVar = dtNascCad.value;
-    if (
-      (nomeVar == "" ||
-        emailVar == "" ||
-        senhaVar == "" ||
-        confirmacaoSenhaVar == "" ||
-        nascVar == "") &&
-      senhaVar == confirmacaoSenhaVar
+				console.log("Houve um erro ao tentar realizar o login!");
+
+				resposta.text().then(texto => {
+					console.error(texto);
+				});
+			}
+
+		}).catch(function (erro) {
+			console.log(erro);
+		})
+
+		return false;
+	}
+
+	function cadastrarBanda(){
+		var cep = cepCad.value;
+		var rua= '';
+		var cidade = ''
+		var estado = ''
+
+
+		const url = `https://viacep.com.br/ws/${cep}/json/`;
+		
+		fetch(url)
+		.then( response => response.json())
+		.then( json => {
+			
+			if( json.logradouro ) {
+				rua = json.logradouro;
+				cidade = json.localidade;
+				estado = json.uf;
+				cadastrarBanda2(rua,cidade,estado, cep)
+			}
+		});
+		
+		
+		
+	}
+	function cadastrarBanda2(rua,cidade,estado, cep){
+
+	var bandaFav = slcBanda.value;
+	var estiloFav = slcEstilo.value;
+
+	console.log(`${rua} ${cidade} ${estado} ${cep} ${id} ${bandaFav} ${estiloFav}`);
+
+	fetch("/usuarios/cadastrarBanda", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				// crie um atributo que recebe o valor recuperado aqui
+				// Agora vá para o arquivo routes/usuario.js
+				bandaServer: bandaFav,
+				estiloServer: estiloFav,
+				cepServer: cep,
+				ruaServer: rua,
+				cidadeServer: cidade,
+				estadoServer: estado,
+				idServer: id,
+			}),
+
+		})
+		.then(function (resposta) {
+			
+      if (resposta.ok) {
+        alert("Cadastro realizado com sucesso!");
+
+					divCad2.style.animation = 'aparecerBaquetaE 1s reverse'
+
+					setTimeout(() => {
+						divCad2.style.display = 'none';
+
+					}, "900");
+
+					divLogin.style.animation = 'pingoCad 2s forwards ease-in'
+
+
+					setTimeout(() => {
+						divLogin.style.display = 'flex';
+					}, "900");
+
+				} else {
+					throw "Houve um erro ao tentar realizar o cadastro!";
+				}
+			})
+			.catch(function (resposta) {
+				alert(resposta);
+
+				console.log(`#ERRO: ${resposta}`);
+			});
+			return false
+	}
+	var id =0;
+	function cadastrar() {
+
+		//Recupere o valor da nova input pelo nome do id
+		// Agora vá para o método fetch logo abaixo
+		var nomeVar = nomeCad.value;
+		var emailVar = emailCad.value;
+		var senhaVar = senhaCad.value;
+		var confirmacaoSenhaVar = confsenhaCad.value;
+		var nascVar = dtNascCad.value;
+		var validacao = 0;
+		// alert(nomeVar)
+		// Enviando o valor da nova input
+
+
+
+
+
+		if (
+      nomeVar.indexOf("#") >= 0 ||
+      nomeVar.indexOf("@") >= 0 ||
+      nomeVar.indexOf("!") >= 0 ||
+      nomeVar.indexOf("%") >= 0 ||
+      nomeVar.indexOf("*") >= 0 ||
+      nomeVar.indexOf("$") >= 0 ||
+      nomeVar.indexOf("&") >= 0
+
     ) {
-      alert("(Mensagem de erro para todos os campos em branco)");
+      div_mensagem.style.display = "flex"
+      div_mensagem.innerHTML += `-Não pode haver caracter especial no nome da empresa<br>`;
 
+      validacao = 1
+    }
+
+    //SENHA
+
+    if (senhaVar.length < 8) {
+      div_mensagem.innerHTML += `-A senha deve possuir no mínimo 8 caracteres <br>`;
+      div_mensagem.style.display = "flex";
+      validacao = 1
+    }
+
+    if (senhaVar.indexOf(" ") >= 0) {
+      div_mensagem.innerHTML += `-Não pode conter espaços na senha <br>`;
+      div_mensagem.style.display = "flex";
+      validacao = 1
+    }
+	
+    if (
+		!(senhaVar.indexOf("#") >= 1 ||
+        senhaVar.indexOf("@") >= 1 ||
+        senhaVar.indexOf("!") >= 1 ||
+        senhaVar.indexOf("%") >= 1 ||
+        senhaVar.indexOf("*") >= 1 ||
+        senhaVar.indexOf("$") >= 1 ||
+        senhaVar.indexOf("_") >= 1 ||
+        senhaVar.indexOf("-") >= 1 ||
+        senhaVar.indexOf("&") >= 1)
+		) {
+      div_mensagem.innerHTML += `-A senha deve possuir no mínimo 1 caracter especial <br>`;
+      div_mensagem.style.display = "flex";
+      validacao = 1
+    }
+	
+	
+		if (senhaVar != confirmacaoSenhaVar) {
+		  mensagem += `-Senhas incompatíveis`;
+		  validacao = 1
+		}
+
+
+
+    //EMAIL
+	
+    if (!(emailVar.indexOf("@") >= 1)) {
+      div_mensagem.innerHTML += `-Deve conter @ no email<br>`;
+      div_mensagem.style.display = "flex";
+      validacao = 1
+    }
+    if (!(emailVar.indexOf(".com") >= 1)) {
+      div_mensagem.innerHTML += `-Deve conter .com no email <br>`;
+      div_mensagem.style.display = "flex";
+      validacao = 1
+    }
+    if (emailVar.indexOf(" ") >= 0) {
+      div_mensagem.innerHTML += `-Não pode conter espaços na email <br>`;
+      div_mensagem.style.display = "flex";
+      validacao = 1
+    }
+
+    if (validacao == 1) {
       return false;
     } else {
-      setInterval(sumirMensagem, 5000);
-    }
 
-    // Enviando o valor da nova input
-    fetch("/usuarios/cadastrar", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        // Agora vá para o arquivo routes/usuario.js
-        nomeServer: nomeVar,
-        emailServer: emailVar,
-        senhaServer: senhaVar,
-        nascimentoServer: nascVar,
-      }),
-    })
-      .then(function (resposta) {
-        console.log("resposta: ", resposta);
+		fetch("/usuarios/cadastrar", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				// crie um atributo que recebe o valor recuperado aqui
+				// Agora vá para o arquivo routes/usuario.js
+				nomeServer: nomeVar,
+				emailServer: emailVar,
+				senhaServer: senhaVar,
+				nascimentoServer: nascVar
+			}),
+		})
+			.then(function (resposta) {
+				console.log("resposta: ", resposta);
 
-        if (resposta.ok) {
-          alert(
-            "Cadastro realizado com sucesso! Redirecionando para tela de Login..."
-          );
+				if (resposta.ok) {
 
-          setTimeout(() => {
-            window.location = "index.html";
-          }, "2000");
+					//alert('asdasdas')
+					//alert(idUser)
 
-          limparFormulario();
-        } else {
-          throw "Houve um erro ao tentar realizar o cadastro!";
-        }
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-      });
+					resposta.json().then(json => {
 
-    return false;
-  }
+						id = json.idUser
 
-  function sumirMensagem() {
-    // cardErro.style.display = "none";
-  }
 
-  function aparecer() {
-    var disp = divCad.style.display;
+					});
 
-    if (disp == "flex") {
-      aparecerCad(true);
-      setTimeout(() => {
-        aparecerLogin(false);
-      }, "700");
-    } else {
-      aparecerLogin(true);
-      setTimeout(() => {
-        aparecerCad(false);
-      }, "700");
-    }
-  }
+					//alert("Cadastro realizado com sucesso!");
 
-  function aparecerLogin(teste) {
-    if (teste) {
-      divLogin.style.animation = "aparecerCad 1s reverse";
 
-      setTimeout(() => {
-        divLogin.style.display = "none";
-      }, "900");
-    } else {
-      divLogin.style.animation = "aparecerBaquetaE 1s";
+					divCad.style.animation = 'aparecerBaquetaE 1s reverse'
 
-      setTimeout(() => {
-        divLogin.style.display = "flex";
-      }, "900");
-    }
-  }
+					setTimeout(() => {
+						divCad.style.display = 'none';
 
-  function aparecerCad(teste) {
-    if (teste) {
-      divCad.style.animation = "aparecerBaquetaE 1s reverse";
-      setTimeout(() => {
-        divCad.style.display = "none";
-      }, "900");
-    } else {
-      divCad.style.animation = "aparecerCad 1s";
-      setTimeout(() => {
-        divCad.style.display = "flex";
-      }, "900");
-    }
-  }
+					}, "900");
+
+					divCad2.style.animation = 'pingoCad 2s forwards ease-in'
+
+
+					setTimeout(() => {
+						divCad2.style.display = 'flex';
+					}, "900");
+
+				} else {
+					throw "Houve um erro ao tentar realizar o cadastro!";
+				}
+			})
+			.catch(function (resposta) {
+				console.log(`#ERRO: ${resposta}`);
+			});
+		}
+		return false;
+	}
+
+	function aparecer() {
+
+var disp = divCad.style.display
+
+if (disp == 'flex') {
+
+  aparecerCad(true)
+  setTimeout(() => {
+
+    aparecerLogin(false)
+  }, '700')
+} else {
+
+  aparecerLogin(true)
+  setTimeout(() => {
+
+
+    aparecerCad(false)
+  }, '700')
+}
+
+}
+
+function aparecerLogin(teste) {
+if (teste) {
+
+  divLogin.style.animation = 'aparecerCad 1s reverse'
+
+  setTimeout(() => {
+    divLogin.style.display = 'none'
+  }, "900");
+
+} else {
+
+  divLogin.style.animation = 'aparecerBaquetaE 1s'
+
+  setTimeout(() => {
+    divLogin.style.display = 'flex'
+  }, "900");
+
+}
+}
+
+function aparecerCad(teste) {
+if (teste) {
+  divCad.style.animation = 'aparecerBaquetaE 1s reverse'
+  setTimeout(() => {
+    divCad.style.display = 'none'
+  }, "900");
+
+} else {
+  divCad.style.animation = 'aparecerCad 1s'
+  setTimeout(() => {
+    divCad.style.display = 'flex'
+  }, "900");
+}
+}
+
+
+function mudarfoto(){
+var idUsua = sessionStorage.ID_USUARIO;
+if (lblFoto.style.display == 'none'){
+  lblFoto.style.display = 'block';
+}else{
+  console.log('o usuario é ' + id);
+const formData = new FormData();
+formData.append('foto', fotoTroca.files[0]);
+formData.append('id', idUsua);
+
+fetch("/usuarios/cadastroImg", {
+  method: "POST",
+  body: formData
+})
+  .then(res => {
+    buscarPeloId()
+})
+  .catch(err => {
+    console.log(err);
+})
+}
+}
+
+function buscarPeloId() {
+
+var idUsua = sessionStorage.ID_USUARIO;
+fetch(`/usuarios/${idUsua}`, {
+method: "GET"
+})
+.then(res => {
+  res.json().then(json => {
+  const usuario = json[0].imagem_perfil;
+  console.log(usuario);
+  divFoto.innerHTML = `
+        <img src="img/perfil/${usuario}" width="100%" height="200px">
+  `;
+  sessionStorage.IMG_USUARIO = usuario;
+  lblFoto.style.display = 'none'
+  })
+})
+.catch(err => {
+  console.log(err);
+})
+}
 </script>

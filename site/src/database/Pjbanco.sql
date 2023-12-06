@@ -24,10 +24,42 @@ create table usuario(
     sexo varchar(9),
     bandaFav varchar(30),
     estiloFav varchar(30),
-    imagem_perfil varchar(255)
+    imagem_perfil varchar(255) DEFAULT 'semFoto'
 );
 
-insert into usuario values (default, 'asdasd', 'asdj@gmail.com', 'alsojdnalsd', timestamp)
+insert into usuario (nome, email, senha, dtNasc, bandaFav, estiloFav) values ('pessoa', 'pessoa@gmail.com', 'qualquercoisa', current_timestamp());
+
+select
+	(select count(estado) from endereco join usuario on fkUser = idUsuario where estado = 'AC' AND bandaFav = 'Rock' ) as AC,
+	(select count(estado) from endereco join usuario on fkUser = idUsuario where estado = 'AL' AND bandaFav = 'Rock') as AL,
+	(select count(estado) from endereco join usuario on fkUser = idUsuario where estado = 'AP' AND bandaFav = 'Rock') as AP,
+	(select count(estado) from endereco join usuario on fkUser = idUsuario where estado = 'AM' AND bandaFav = 'Rock') as AM,
+	(select count(estado) from endereco join usuario on fkUser = idUsuario where estado = 'BA' AND bandaFav = 'Rock') as BA,
+	(select count(estado) from endereco join usuario on fkUser = idUsuario where estado = 'CE' AND bandaFav = 'Rock') as CE,
+	(select count(estado) from endereco join usuario on fkUser = idUsuario where estado = 'DF' AND bandaFav = 'Rock') as DF,
+	(select count(estado) from endereco join usuario on fkUser = idUsuario where estado = 'ES' AND bandaFav = 'Rock') as ES,
+	(select count(estado) from endereco join usuario on fkUser = idUsuario where estado = 'GO' AND bandaFav = 'Rock') as GO,
+	(select count(estado) from endereco join usuario on fkUser = idUsuario where estado = 'MA' AND bandaFav = 'Rock') as MA,
+	(select count(estado) from endereco join usuario on fkUser = idUsuario where estado = 'MT' AND bandaFav = 'Rock') as MT,
+	(select count(estado) from endereco join usuario on fkUser = idUsuario where estado = 'MS' AND bandaFav = 'Rock') as MS,
+	(select count(estado) from endereco join usuario on fkUser = idUsuario where estado = 'MG' AND bandaFav = 'Rock') as MG,
+	(select count(estado) from endereco join usuario on fkUser = idUsuario where estado = 'PA' AND bandaFav = 'Rock') as PA,
+	(select count(estado) from endereco join usuario on fkUser = idUsuario where estado = 'PB' AND bandaFav = 'Rock') as PB,
+	(select count(estado) from endereco join usuario on fkUser = idUsuario where estado = 'PR' AND bandaFav = 'Rock') as PR,
+	(select count(estado) from endereco join usuario on fkUser = idUsuario where estado = 'PE' AND bandaFav = 'Rock') as PE,
+	(select count(estado) from endereco join usuario on fkUser = idUsuario where estado = 'PI' AND bandaFav = 'Rock') as PI,
+	(select count(estado) from endereco join usuario on fkUser = idUsuario where estado = 'RJ' AND bandaFav = 'Rock') as RJ,
+	(select count(estado) from endereco join usuario on fkUser = idUsuario where estado = 'RN' AND bandaFav = 'Rock') as RN,
+	(select count(estado) from endereco join usuario on fkUser = idUsuario where estado = 'RS' AND bandaFav = 'Rock') as RS,
+	(select count(estado) from endereco join usuario on fkUser = idUsuario where estado = 'RO' AND bandaFav = 'Rock') as RO,
+	(select count(estado) from endereco join usuario on fkUser = idUsuario where estado = 'RR' AND bandaFav = 'Rock') as RR,
+	(select count(estado) from endereco join usuario on fkUser = idUsuario where estado = 'SC' AND bandaFav = 'Rock') as SC,
+	(select count(estado) from endereco join usuario on fkUser = idUsuario where estado = 'SP' AND bandaFav = 'Rock') as SP,
+	(select count(estado) from endereco join usuario on fkUser = idUsuario where estado = 'SE' AND bandaFav = 'Rock') as SE,
+	(select count(estado) from endereco join usuario on fkUser = idUsuario where estado = 'RN' AND bandaFav = 'Rock') as RN,
+	(select count(estado) from endereco join usuario on fkUser = idUsuario where estado = 'TO' AND bandaFav = 'Rock') as 'TO'
+		from endereco limit 1;
+
 
         
 select * from usuario;
